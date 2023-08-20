@@ -1,5 +1,11 @@
+import MainNavbar from '@/components/MainNavbar';
+
 const page = () => {
-  return <></>;
+  return (
+    <>
+      <MainNavbar />
+    </>
+  );
 };
 
 export default page;
