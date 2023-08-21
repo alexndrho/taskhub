@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import MainNavbar from '@/components/MainNavbar';
+import MainNavbar from '@/app/components/MainNavbar';
 
 const page = () => {
   return (
