@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { Prisma } from '@prisma/client';
 import prisma from '@/app/libs/prismadb';
 import { ZodError } from 'zod';
@@ -8,7 +8,7 @@ import {
   IResponseError,
 } from '@/types/IResponseError';
 
-const POST = async (req: NextResponse) => {
+const POST = async (req: NextRequest) => {
   try {
     const body = await req.json();
     const { name, email, password } = body;
