@@ -35,6 +35,7 @@ const POST = async (req: NextRequest) => {
               {
                 code: CustomErrorCodes.UNIQUE_CONSTRAINT_ERROR,
                 message: 'Email already exists',
+                path: ['email'],
               },
             ],
           } as IResponseError,
