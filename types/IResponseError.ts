@@ -8,7 +8,7 @@ enum CustomErrorCodes {
 interface IError {
   code: ZodIssueCode | CustomErrorCodes;
   message: string;
-  path?: (string | number)[];
+  path: (string | number)[];
 }
 
 interface IResponseError {
