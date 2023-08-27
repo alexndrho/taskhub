@@ -36,6 +36,7 @@ const LoginPage = () => {
         setError('Invalid email or password');
       } else {
         router.push(callbackUrl);
+        setError('');
       }
 
       setLoading(false);
@@ -45,10 +46,6 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    setError('');
-  }, [email, password]);
 
   return (
     <form
