@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import { accountSchema } from './zod/accountSchema';
 import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
@@ -10,7 +9,6 @@ const client =
     query: {
       account: {
         async create({ args, query }) {
-          args.data = accountSchema.parse(args.data);
           args.data.password = await bcrypt.hash(
             args.data.password,
             saltRounds
@@ -19,8 +17,6 @@ const client =
         },
 
         async update({ args, query }) {
-          args.data = accountSchema.parse(args.data);
-
           if (typeof args.data.password === 'string') {
             args.data.password = await bcrypt.hash(
               args.data.password,

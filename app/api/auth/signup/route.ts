@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { ZodError } from 'zod';
 import { Prisma } from '@prisma/client';
 import prisma from '@/app/libs/prismadb';
-import { ZodError } from 'zod';
+import { accountSchema } from '@/app/libs/zod/accountSchema';
 import {
   CustomErrorCodes,
   IError,
@@ -14,11 +15,7 @@ const POST = async (req: NextRequest) => {
     const { name, email, password } = body;
 
     await prisma.account.create({
-      data: {
-        name,
-        email,
-        password,
-      },
+      data: accountSchema.parse({ name, email, password }),
     });
 
     return NextResponse.json({ message: 'Account created' }, { status: 201 });
