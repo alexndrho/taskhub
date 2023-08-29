@@ -1,7 +1,7 @@
 import LandingPage from './pages/LandingPage';
 
-const page = () => {
+const App = () => {
   return <LandingPage />;
 };
 
-export default page;
+export default App;
