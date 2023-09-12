@@ -32,6 +32,26 @@ const options: NextAuthOptions = {
     }),
   ],
 
+  callbacks: {
+    session: async ({ token, session }) => {
+      if (session?.user) {
+        session.user.id = token.uid as string;
+      }
+      return session;
+    },
+
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.uid = user.id;
+      }
+      return token;
+    },
+  },
+
+  session: {
+    strategy: 'jwt',
+  },
+
   pages: {
     signIn: '/account/login',
   },
